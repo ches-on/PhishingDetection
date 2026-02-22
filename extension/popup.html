@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phishing Detector</title>
+    <link rel="stylesheet" href="vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="popup-wrap p-3" style="width:560px; min-width:560px;">
+      <!-- Header -->
+      <div class="d-flex align-items-center gap-2 mb-3">
+        <div class="shield-badge">🛡️</div>
+        <div>
+          <h1 class="h6 mb-1 fw-bold">Phishing Detector</h1>
+          <p class="text-muted small mb-0">
+            Analyze suspicious email text or upload an .eml file.
+          </p>
+        </div>
+      </div>
+
+      <!-- Mode Switch -->
+      <div class="card shadow-sm border-0 mb-3">
+        <div class="card-body p-2">
+          <div class="btn-group w-100 btn-lg" role="group" aria-label="Analysis mode">
+            <button id="modeTextBtn" type="button" class="btn btn-primary active">
+              Email Text
+            </button>
+            <button id="modeEmlBtn" type="button" class="btn btn-outline-primary btn-lg">
+              .eml File
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text Panel -->
+      <div id="textPanel" class="card shadow-sm border-0 mb-3">
+        <div class="card-body">
+          <h2 class="h6 mb-2">Paste Email Text</h2>
+
+          <textarea
+            id="emailText"
+            class="form-control form-control-sm"
+            rows="8"
+            placeholder="Paste email text here..."
+          ></textarea>
+
+          <div class="d-flex gap-2 mt-3">
+            <button id="analyzeBtn" type="button" class="btn btn-primary btn-sm flex-fill">
+              Analyze Text
+            </button>
+            <button id="clearBtn" type="button" class="btn btn-outline-secondary btn-sm">
+              Clear
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- EML Panel -->
+      <div id="emlPanel" class="card shadow-sm border-0 mb-3 d-none">
+        <div class="card-body">
+          <h2 class="h6 mb-2">Upload .eml File</h2>
+
+          <input
+            id="emlFile"
+            type="file"
+            accept=".eml,message/rfc822"
+            class="form-control form-control-sm"
+          />
+
+          <p id="fileInfo" class="text-muted small mt-2 mb-0 d-none"></p>
+
+          <div class="d-flex gap-2 mt-3">
+            <button id="analyzeEmlBtn" type="button" class="btn btn-primary btn-sm flex-fill">
+              Analyze .eml
+            </button>
+            <button id="resetFileBtn" type="button" class="btn btn-outline-secondary btn-sm">
+              Reset File
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Status -->
+      <div id="errorBox" class="alert alert-danger py-2 px-3 small d-none" role="alert"></div>
+      <div id="loadingBox" class="alert alert-info py-2 px-3 small d-none" role="status">
+        Analyzing...
+      </div>
+
+      <!-- Result -->
+      <section id="resultCard" class="card shadow-sm border-0 d-none">
+        <div class="card-body">
+          <!-- Summary -->
+          <div class="row g-2 mb-3">
+            <div class="col-6">
+              <div class="summary-tile">
+                <div class="text-muted small">Risk Score</div>
+                <div id="riskScore" class="fw-bold">0/100</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="summary-tile">
+                <div class="text-muted small">Verdict</div>
+                <div>
+                  <span id="verdict" class="badge verdict-badge bg-success-subtle text-success-emphasis">LOW</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Extracted -->
+          <div class="mb-3">
+            <h3 class="h6 mb-2">Extracted</h3>
+            <div class="small">
+              <div class="mb-1"><span class="text-muted">Subject:</span> <span id="subjectVal">N/A</span></div>
+              <div class="mb-1"><span class="text-muted">From:</span> <span id="fromVal">N/A</span></div>
+              <div class="mb-1"><span class="text-muted">Reply-To:</span> <span id="replyToVal">N/A</span></div>
+              <div class="mb-0"><span class="text-muted">To:</span> <span id="toVal">N/A</span></div>
+            </div>
+          </div>
+
+          <!-- URLs -->
+          <div class="mb-3">
+            <h3 class="h6 mb-2">URLs</h3>
+            <ul id="urlList" class="list-group list-group-flush small mb-0"></ul>
+            <p id="noUrls" class="text-muted small mb-0">No URLs extracted.</p>
+          </div>
+
+          <!-- Findings -->
+          <div>
+            <h3 class="h6 mb-2">Findings</h3>
+            <ul id="findingsList" class="list-unstyled mb-0"></ul>
+            <p id="noFindings" class="text-muted small mb-0">
+              No strong phishing indicators detected.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

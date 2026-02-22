@@ -1,0 +1,119 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 560px !important;
+  min-width: 560px !important;
+  min-height: 680px;
+  background:
+    radial-gradient(circle at top right, rgba(124, 58, 237, 0.10), transparent 45%),
+    radial-gradient(circle at top left, rgba(79, 70, 229, 0.10), transparent 45%),
+    #eef2ff;
+}
+
+.popup-wrap {
+  width: 560px;
+  min-width: 560px;
+}
+
+textarea.form-control {
+  min-height: 160px;
+}
+
+.popup-wrap {
+  color: #0f172a;
+}
+
+.shield-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: #fff;
+  box-shadow: 0 8px 16px rgba(79, 70, 229, 0.22);
+  flex-shrink: 0;
+}
+
+.card {
+  border-radius: 14px !important;
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.summary-tile {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #f8fafc;
+  padding: 10px;
+}
+
+.verdict-badge {
+  font-size: 0.75rem;
+  letter-spacing: 0.3px;
+  border-radius: 999px;
+  padding: 0.35rem 0.6rem;
+}
+
+#urlList .list-group-item {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px !important;
+  background: #f8fafc;
+  margin-bottom: 6px;
+  padding: 8px 10px;
+  word-break: break-word;
+}
+
+.finding-item {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fafafa;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+}
+
+.finding-item.high {
+  border-color: #fecaca;
+  background: #fff7f7;
+}
+
+.finding-item.medium {
+  border-color: #fde68a;
+  background: #fffdf2;
+}
+
+.finding-item.low {
+  border-color: #bfdbfe;
+  background: #f7fbff;
+}
+
+.finding-title {
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.finding-code {
+  color: #64748b;
+  font-size: 11px;
+  margin-bottom: 2px;
+  word-break: break-word;
+}
+
+.finding-detail {
+  font-size: 12px;
+  word-break: break-word;
+}
+
+.text-wrap-break {
+  word-break: break-word;
+}
+
+/* Make tab buttons look selected clearly */
+#modeTextBtn.active,
+#modeEmlBtn.active {
+  box-shadow: 0 6px 14px rgba(79, 70, 229, 0.18);
+}
