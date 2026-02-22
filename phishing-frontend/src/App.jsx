@@ -101,7 +101,7 @@ export default function App() {
   return (
   <div className="app-shell">
     <header className="page-header">
-      <h1>Phishing Detection System</h1>
+      <h1>Phishing Detector</h1>
       <p className="muted">
         Analyze suspicious email text or .eml files and review phishing risk findings.
       </p>
